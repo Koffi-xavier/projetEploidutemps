@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription des agents{% endblock %}
+    
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+{{ form_start(form) }}
+<div class="mb-3">
+  {# <label for="exampleFormControlInput1" class="form-label">matricule</label> #}
+  {# <input class="form-control" type="text" placeholder="Default input" aria-label="default input example"> #}
+      {{ form_row(form.matricule, {'label': 'Matricule', 'attr': {'placeholder': 'Matricule'}}) }}
+
+  </div>
+<div class="mb-3">
+    {# <input class="form-control" type="text" placeholder="Default input" aria-label="default input example"> #}
+    {{ form_row(form.nom, {'label': 'Nom', 'attr': {'placeholder': 'Nom'}}) }}
+
+</div>
+
+
+<div class="mb-3">
+  <button type="submit" class="btn btn-success text-align: center">Valider</button>
+  
+</div>
+    {# {{ form(form) }} #}
+
+
+{{ form_end(form) }}
+    
+{% endblock %}
