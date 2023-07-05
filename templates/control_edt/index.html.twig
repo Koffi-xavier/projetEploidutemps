@@ -7,18 +7,54 @@
 {% block body %}
 
 {{ form_start(form) }}
+
+<div class="mb-3">
+    {# <input class="form-control" type="text" placeholder="Default input" aria-label="default input example"> #}
+    {{ form_row(form.anneScolaire, {'label': 'anneScolaire', 'attr': {'placeholder': 'anneScolaire'}}) }}
+</div>
+
 <div class="mb-3">
   {# <label for="exampleFormControlInput1" class="form-label">matricule</label> #}
   {# <input class="form-control" type="text" placeholder="Default input" aria-label="default input example"> #}
-      {{ form_row(form.matricule, {'label': 'Matricule', 'attr': {'placeholder': 'Matricule'}}) }}
-
+  {{ form_row(form.matricule, {'label': 'Matricule', 'attr': {'placeholder': 'Matricule'}}) }}
   </div>
+
+  <div class="mb-3">
+    {{ form_row(form.sexe, {'label': 'sexe', 'attr': {'placeholder': 'sexe'}}) }}
+</div>
+
+  <div class="mb-3">
+    {{ form_row(form.civilite, {'label': 'civilite', 'attr': {'placeholder': 'civilite'}}) }}
+</div>
+
 <div class="mb-3">
     {# <input class="form-control" type="text" placeholder="Default input" aria-label="default input example"> #}
     {{ form_row(form.nom, {'label': 'Nom', 'attr': {'placeholder': 'Nom'}}) }}
-
 </div>
 
+<div class="mb-3">
+    {{ form_row(form.prenom, {'label': 'prenom', 'attr': {'placeholder': 'prenom'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_row(form.NomJeuneFille, {'label': 'NomJeuneFille', 'attr': {'placeholder': 'NomJeuneFille'}}) }}
+</div>
+
+<div class="mb-3">
+    {{form_row(form.discipline, {'label': 'discipline', 'attr': {'placeholder': 'discipline'}})}}
+</div>
+
+<div class="mb-3">
+    {{ form_row(form.volumeHoraie, {'label': 'volumeHoraie', 'attr': {'placeholder': 'volumeHoraie'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_row(form.email, {'label': 'email', 'attr': {'placeholder': 'email'}}) }}
+</div>
+
+<div class="mb-3">
+    {{ form_row(form.premierePriseDeService, {'label': 'premierePriseDeService'}) }}
+</div>
 
 <div class="mb-3">
   <button type="submit" class="btn btn-success text-align: center">Valider</button>
