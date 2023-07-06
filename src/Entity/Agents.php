@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\AgentsRepository;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AgentsRepository;
 
 #[ORM\Entity(repositoryClass: AgentsRepository::class)]
 class Agents
@@ -48,7 +49,7 @@ class Agents
     private ?\DateTimeInterface $dateEntreStructure = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'agents')]
     private ?Emploi $partentEmploi = null;
@@ -58,6 +59,11 @@ class Agents
 
     #[ORM\ManyToOne]
     private ?Discipline $discipline = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -198,12 +204,12 @@ class Agents
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->created_at;
+        return $this->createdAt ?? new DateTime();
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
