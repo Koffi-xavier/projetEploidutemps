@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\UsersRepository;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UsersRepository;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -43,7 +44,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $ville = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $tel = null;
@@ -53,7 +54,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->created_at = new \DateTimeImmutable();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -176,12 +177,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->created_at;
+        return $this->createdAt ?? new DateTime();
     }
 
     public function setCreatedAt(\DateTimeImmutable $created_at): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $created_at;
 
         return $this;
     }

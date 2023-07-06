@@ -21,9 +21,10 @@ class ControlEdtController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-           
+            // $agent->setCreatedAt = new \Datetime();
+
             
-            $entityManager->persit($agent);
+            $entityManager->persist($agent);
             $entityManager->flush();
 
             // ... perform some action, such as saving the task to the database
@@ -31,7 +32,7 @@ class ControlEdtController extends AbstractController
             // return $this->redirectToRoute('');
         }
 
-        return $this->render('control_edt/index.html.twig', [
+        return $this->render('control_edt/controle_edt.html.twig', [
             'form' => $form->createView(),
             
         ]);
