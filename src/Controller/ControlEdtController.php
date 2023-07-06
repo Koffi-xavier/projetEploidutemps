@@ -27,9 +27,11 @@ class ControlEdtController extends AbstractController
             $entityManager->persist($agent);
             $entityManager->flush();
 
-            // ... perform some action, such as saving the task to the database
+           
+            $this->addFlash('success', 'Votre agent a été enregistrée avec succès');
 
-            // return $this->redirectToRoute('');
+            // return $this->redirectToRoute('demande_add', ['id' => $demande->getId()]);
+            return $this->redirectToRoute('main');
         }
 
         return $this->render('control_edt/controle_edt.html.twig', [
