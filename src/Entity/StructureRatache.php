@@ -30,6 +30,9 @@ class StructureRatache
     #[ORM\OneToMany(mappedBy: 'parentStructureRatachee', targetEntity: Agents::class)]
     private Collection $agents;
 
+    #[ORM\Column]
+    private ?int $nombreDeleves = null;
+
     public function __construct()
     {
         $this->agents = new ArrayCollection();
@@ -114,6 +117,18 @@ class StructureRatache
                 $agent->setParentStructureRatachee(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNombreDeleves(): ?int
+    {
+        return $this->nombreDeleves;
+    }
+
+    public function setNombreDeleves(int $nombreDeleves): self
+    {
+        $this->nombreDeleves = $nombreDeleves;
 
         return $this;
     }

@@ -16,6 +16,9 @@ class Discipline
     #[ORM\Column(length: 100)]
     private ?string $libelle = null;
 
+    #[ORM\ManyToOne(inversedBy: 'parentDisciplin')]
+    private ?Ratio $ratio = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Discipline
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getRatio(): ?Ratio
+    {
+        return $this->ratio;
+    }
+
+    public function setRatio(?Ratio $ratio): self
+    {
+        $this->ratio = $ratio;
 
         return $this;
     }

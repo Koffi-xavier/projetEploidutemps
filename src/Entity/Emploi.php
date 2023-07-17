@@ -28,6 +28,9 @@ class Emploi
     #[ORM\OneToMany(mappedBy: 'partentEmploi', targetEntity: Agents::class)]
     private Collection $agents;
 
+    #[ORM\ManyToOne(inversedBy: 'parentEmploi')]
+    private ?Ratio $parentDiscipline = null;
+
     public function __construct()
     {
         $this->agents = new ArrayCollection();
@@ -100,6 +103,18 @@ class Emploi
                 $agent->setPartentEmploi(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getParentDiscipline(): ?Ratio
+    {
+        return $this->parentDiscipline;
+    }
+
+    public function setParentDiscipline(?Ratio $parentDiscipline): self
+    {
+        $this->parentDiscipline = $parentDiscipline;
 
         return $this;
     }
